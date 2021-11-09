@@ -40,9 +40,9 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "",
+  "libVersion": "2.19.3",
   "appid": "wx1413e08d4af894f2",
-  "projectname": "uView_shop",
+  "projectname": "uView-demo",
   "condition": {
     "search": {
       "list": []
