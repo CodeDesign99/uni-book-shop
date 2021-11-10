@@ -51,16 +51,16 @@ const install = (Vue, vm) => {
 	// 响应拦截，判断状态码是否通过
 	Vue.prototype.$u.http.interceptor.response = (res) => {
 		const {statusCode, data} = res;
-		if(statusCode < 400) {
+		if (statusCode < 400) {
 			// res为服务端返回值，可能有code，result等字段
 			// 这里对res.result进行返回，将会在this.$u.post(url).then(res => {})的then回调中的res的到
 			// 如果配置了originalData为true，请留意这里的返回值
 			return data;
-		} else if(statusCode == 400) {
+		} else if (statusCode == 400) {
 			// 错误的请求
 			vm.$u.toast(data.message)
 			return false;
-		} else if(statusCode == 401) {
+		} else if (statusCode == 401) {
 			// 假设201为token失效，这里跳转登录
 			vm.$u.toast('验证失败，请重新登录');
 			setTimeout(() => {
@@ -68,7 +68,7 @@ const install = (Vue, vm) => {
 				vm.$u.route('/pages/user/login')
 			}, 1500)
 			return false;
-		} else if(statusCode == 422) {
+		} else if (statusCode == 422) {
 			// 表单验证未通过
 			const {errors} = data;
 			vm.$u.toast(Object.values(errors)[0][0])
